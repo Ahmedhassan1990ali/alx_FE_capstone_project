@@ -1,10 +1,9 @@
 import { useState } from 'react'
 
-const Questionspage = ({category,questions,setPage}) => {
+const Questionspage = ({category,questions,setPage,score,setScore}) => {
 
     const [currQuestion,setCurrentQuestion] = useState(0)
     const [selectedAns,setSelectedAns] = useState("")
-    const [score,setScore] = useState(0)
     
     const onAnswer = (index) => {
         if (selectedAns ===""){
@@ -23,6 +22,8 @@ const Questionspage = ({category,questions,setPage}) => {
         }
         else {
             setPage("Results")
+            setCurrentQuestion(0)
+            setSelectedAns("")
         }
     }
 
@@ -60,9 +61,10 @@ const Questionspage = ({category,questions,setPage}) => {
                  style={{ width: `${Math.floor(100 * (currQuestion + 1) / questions.length)}%` }}>   
             </div>
         </div>
-        <h2 className='text-2xl font-semibold text-gray-800 my-3'>
+        <h2 className='text-2xl flex items-center leading-8   font-semibold text-gray-800 min-h-24 my-1'>
             {questions[currQuestion].question}
         </h2>
+        
         {questions[currQuestion].allAns.map((ans,index)=>{
             return (
                 <button 
@@ -78,8 +80,8 @@ const Questionspage = ({category,questions,setPage}) => {
         })}
         
         {selectedAns !== ""  && 
-        <button className="block px-4 py-3 mt-5 mx-auto text-white rounded-lg  bg-green-700
-                     transition-colors text-center text-xl   w-1/3"
+        <button className="block px-4 py-3 mt-3 mx-auto text-white rounded-lg  bg-green-700
+                     transition-colors text-center text-xl   w-1/2"
                 onClick = {onContinue}
         >
             {currQuestion !== questions.length-1? "Continue >>" : "Finish"}

@@ -62,13 +62,13 @@ const HomePage = ({ category, setCategory, setQuestions, setPage})=>{
     return (
     <>
       {error && (
-        <div className='mb-4 p-3 bg-red-100 text-red-700 rounded-lg w-64 text-center'>
+        <div className='mb-4 p-3 text-3xl bg-red-100 text-red-700 rounded-lg w-64 text-center'>
           Unable to load questions. Please check your internet connection and try again.
         </div>
       )}
     
       {loading && (
-        <div className='mb-4 text-blue-600 text-center mt-4'>
+        <div className='mb-4 text-3xl text-blue-600 text-center mt-4'>
           Loading questions...
         </div>
       )}
@@ -76,23 +76,23 @@ const HomePage = ({ category, setCategory, setQuestions, setPage})=>{
 
       {!loading && !error && (
 
-      <>
+      <div className='my-4  text-center m-auto'>
           
-          <h2 className='text-xl text-gray-700 mb-4'>Select a category:</h2>
-          <div className='flex flex-col gap-3 w-64'>
+          <h2 className='text-4xl text-gray-700 my-16'>Select a category:</h2>
+          <div className='flex flex-col gap-3 w-64 m-auto '>
             {categories.map((category, index) => { 
               return (
                 <button 
                 key={index} 
                 onClick={() => onChose(index)}
-                className='px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 active:bg-blue-700 transition-colors'
+                className='px-4 py-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 active:bg-blue-700 transition-colors'
                 >
                   {category.name}
                 </button>
               )
             })}
           </div>
-      </>
+      </div>
       )}
     </>
     
