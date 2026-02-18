@@ -19,7 +19,8 @@ const DetailsPage = ({questions, chosed, setPage}) => {
             {questions.map((qAndAns,index)=>(
                 <div key={index} className={`flex flex-col ${qBgColor(index)}`}>
                     <p className={`font-bold text-xl `}>{qAndAns.question}</p>
-                    <p>{qAndAns.correctAns}</p>
+                    <p>{"Selected Answer : " + qAndAns.allAns[chosed[index]]}</p>
+                    <p>{"Correct Answer : " + qAndAns.correctAns}</p>
 
                 </div>
             )
