@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const HomePage = ({ category, setCategory, setQuestions, difficulty, setDifficulty, setPage})=>{
+const HomePage = ({ category, setCategory, setQuestions, difficulty, setDifficulty, setPage,setChosed})=>{
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
     const [qNumber, setQNumber] = useState(8)
@@ -46,7 +46,7 @@ const HomePage = ({ category, setCategory, setQuestions, difficulty, setDifficul
     const onStart = () => {
           setLoading(true)
           setError(null)
-          console.log(`https://opentdb.com/api.php?amount=${qNumber}&category=${category.id}&difficulty=${difficulty}&type=multiple`)
+          setChosed([])
           fetch(`https://opentdb.com/api.php?amount=${qNumber}&category=${category.id}&difficulty=${difficulty.toLowerCase()}&type=multiple`)
           .then(response => response.json())
           .then(data => {
