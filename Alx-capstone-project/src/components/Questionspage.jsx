@@ -1,13 +1,14 @@
 import { useState } from 'react'
 
-const Questionspage = ({category,questions,setPage,score,setScore}) => {
+const Questionspage = ({category,questions,setPage,score,setScore,setChosed,chosed}) => {
 
     const [currQuestion,setCurrentQuestion] = useState(0)
     const [selectedAns,setSelectedAns] = useState("")
     
     const onAnswer = (index) => {
-        if (selectedAns ===""){
+        if (selectedAns === ""){
             setSelectedAns(index)
+            setChosed(...chosed,index)
             if (questions[currQuestion].allAns[index] === questions[currQuestion].correctAns){
                 setScore(score+1)
             }
@@ -29,7 +30,6 @@ const Questionspage = ({category,questions,setPage,score,setScore}) => {
 
 
     const buttonstate = (selectedAns,index) => {
-        console.log(`selected:${selectedAns}, index: ${index}`)
         if (selectedAns === ""){  
             return "bg-blue-500 hover:bg-blue-600 active:bg-blue-700"
         }
@@ -45,7 +45,13 @@ const Questionspage = ({category,questions,setPage,score,setScore}) => {
     }
     
     
-
+    if (questions.length === 0) {
+    return (
+        <div className='mb-4 text-3xl text-blue-600 text-center mt-4'>
+          Loading questions...
+        </div>
+    )
+}
 
     return (
         <div>

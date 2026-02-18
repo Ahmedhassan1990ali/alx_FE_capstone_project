@@ -6,31 +6,36 @@ import Resultspage from './components/Resultspage'
 function App() {
   
   const [page, setPage] = useState("Home")
-  const [category, setCategory] = useState(null)
-  const [questions, setQuestions] = useState()
+  const [category, setCategory] = useState({ id: 9, name: "General Knowledge" })
+  const [questions, setQuestions] = useState([])
+  const [chosed, setChosed] = useState([])
   const [score,setScore] = useState(0)
+  const [difficulty, setDifficulty] = useState("Easy")
 
   return (
     <div className='min-h-screen w-10/12 md:w-8/12 mx-auto bg-gray-100 flex flex-col items-center p-4'>
 
       <h1 className='text-3xl font-bold text-gray-800 mb-1'>Alx Capstone Project</h1>
-      <h2 className='text-xl text-gray-600 mb-1'>By Ahmed Hassan</h2>
-      <h2 className='text-2xl font-semibold text-gray-700 mb-1'>Quiz App</h2>
-      <hr className='w-48 border-t-2 border-gray-300 mb-2' />
+      <h2 className='text-xl text-gray-600 mb-0.5'>By Ahmed Hassan</h2>
+      <h2 className='text-4xl font-semibold text-gray-700 mb-1'>Quiz App</h2>
+      <hr className='w-48 border-t-2 border-gray-300 mb-1' />
       
-      <div className='flex-1 w-11/12 text-center'>
+      <div className='flex-1 w-11/12  bg-amber-100 text-center'>
       {page ==="Home" && <HomePage category={category} setCategory={setCategory} 
-                                  setQuestions={setQuestions} setPage={setPage}/>}
+                                  setQuestions={setQuestions} setPage={setPage}
+                                  difficulty={difficulty} setDifficulty={setDifficulty}/>}
       {page ==="Questions" && <Questionspage category={category} questions={questions}
                                               score={score} setScore={setScore}
-                                              setPage={setPage} />}
+                                              setPage={setPage} difficulty={difficulty} 
+                                              chosed={chosed}
+                                              setChosed={setChosed}/>}
       {page ==="Results" && <Resultspage score={score} setScore={setScore} 
                                          questions={questions} setQuestions={setQuestions}
                                          setCategory={setCategory} setPage={setPage}
                                          />}
       </div>
       
-      <p className='text-s text-gray-400 mt-3'>
+      <p className='text-s text-gray-400 mt-2'>
         Questions provided by{' '}
         <a 
           href="https://opentdb.com/" 

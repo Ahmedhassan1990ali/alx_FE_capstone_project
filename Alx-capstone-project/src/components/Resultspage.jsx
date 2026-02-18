@@ -3,7 +3,6 @@ const Resultspage = ({score, setScore, setCategory,questions, setQuestions, setP
 
     const onRestart = () => {
         setScore(0);
-        setCategory(null);
         setQuestions(null);
         setPage("Home")
     }
@@ -16,9 +15,9 @@ const Resultspage = ({score, setScore, setCategory,questions, setQuestions, setP
             <button className="block px-4 py-3 mt-5 mx-auto text-white rounded-lg  bg-green-700
                      transition-colors text-center text-xl "
                 onClick = {onRestart}
-        >
+            >
             Restart
-        </button>
+            </button>
         </div>
     )
 
